@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<title>Laura Bootstrap Template - Index</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
+
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+		rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<!-- List KhuVuc-->
+	<main id="main">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Thêm Sân Bóng</button>
+		<table class="tablekv" style="border: 1px soid;">
+			<thead style="border: 1px soid;">
+				<tr>
+					<th>Mã Sân</th>
+					<th>Tên Sân</th>
+					<th>Diện tích</th>
+					<th>Đơn Giá</th>
+					<th>Thời gian Đặt</th>
+					<th>Thời gian trả</th>
+					<th>Tình trạng</th>
+				</tr>
+			</thead>
+			<tbody style="border: 1px soid;">
+				<tr th:each="sanbong:${sanbongs}">
+					<td th:text="${sanbong.maSan}"></td>
+					<td th:text="${sanbong.tenSan}"></td>
+					<td th:text="${sanbong.dienTich}"></td>
+					<td th:text="${sanbong.donGia}"></td>
+					<td th:text="${sanbong.thoiGianDat}"></td>
+					<td th:text="${sanbong.thoiGianTra}"></td>
+					<td th:text="${sanbong.tinhTrang}"></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+	</main>
+
+
+	<!-- ======= Footer ======= -->
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+	<!--new San Bong-->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/sanbongs/addNew}" method="post">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Sân:</label>
+							<input type="text" class="form-control" id="recipient-name" name="maSan">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tên sân:</label>
+							<input type="text" class="form-control" id="recipient-name" name="tenSan">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="recipient-name" name="diaChi">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Diện tích:</label>
+							<input type="text" class="form-control" id="recipient-name" name="dienTich">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Đơn giá:</label>
+							<input type="text" class="form-control" id="recipient-name" name="donGia">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Thời gian đặt:</label>
+							<input type="datetime-local" class="form-control" id="recipient-name" name="thoiGianDat">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Thời gian trả:</label>
+							<input type="datetime-local" class="form-control" id="recipient-name" name="thoiGianTra">
+						</div>						
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
+							<input type="text" class="form-control" id="recipient-name" name="maKhu">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tình Trạng:</label>
+							<input type="text" class="form-control" id="recipient-name" name="tinhTrang">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Thêm</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Vendor JS Files -->
+	<script src="assets/vendor/purecounter/purecounter.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+	<script src="assets/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="assets/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>
