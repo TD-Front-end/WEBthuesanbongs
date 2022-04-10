@@ -8,21 +8,25 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "maChuSan")
 public class ChuSan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 	private int maChuSan;
 	private String tenChuSan;
-    private String sDT;
-	private String userName;
-	private String passWord;
+    private String sDT;	
+	//
+	@ManyToOne
+	@JoinColumn(name="user_id", insertable=false, updatable=false)
+	private User user;
+	private int user_id;
 	//
 	public int getMaChuSan() {
 		return maChuSan;
@@ -41,18 +45,6 @@ public class ChuSan {
 	}
 	public void setsDT(String sDT) {
 		this.sDT = sDT;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassWord() {
-		return passWord;
-	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
 	}
 
 }
