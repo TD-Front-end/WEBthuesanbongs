@@ -27,9 +27,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(
 				"/login", 
 				"/resources/**", 
-				"/css/**", 
-				"/fonts/**", 
-				"/img/**").permitAll()
+				"/assets/css/**", 
+				"/assets/fonts/**", 
+				"/assets/vendor/**",
+				"/assets/img/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
