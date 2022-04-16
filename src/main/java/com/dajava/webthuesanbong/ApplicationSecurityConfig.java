@@ -25,10 +25,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers(
-				"/login", 
-				"/resources/**", 
-				"/assets/css/**", 
-				"/assets/fonts/**", 
+				"/login",
+				"/resources/**",
+				"/assets/css/**",
+				"/assets/fonts/**",
+				"/assets/js/**",
 				"/assets/vendor/**",
 				"/assets/img/**").permitAll()
 		.anyRequest().authenticated()
