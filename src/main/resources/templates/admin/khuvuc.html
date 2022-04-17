@@ -333,7 +333,7 @@
                     <td>
                         <a style="cursor: pointer" class="view" title="View" data-toggle="tooltip"><i
                                 class="material-icons">&#xE417;</i></a>
-                        <a th:href="@{'/admin/khuvuc/edit?id='+${item.maKhu}}" style="cursor: pointer" class="edit" title="Edit" data-toggle="tooltip"><i
+                        <a  th:href="@{/admin/khuvuc/edit(id = ${item.maKhu})}" style="cursor: pointer" class="edit" title="Edit" data-toggle="tooltip"><i
                                 class="material-icons">&#xE254;</i></a>
                         <a th:href="@{'/admin/khuvuc/delete?id='+${item.maKhu}}" style="cursor: pointer" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                     </td>
@@ -373,7 +373,7 @@
                             <h3 class="auth-form__heading">Create a new area</h3>
                         </div>
                         <form method="post" th:action="@{/admin/khuvuc/create}">
-                            <div class="auth-form__form">
+                            <div class="auth-form__form" id="form-edit">
                                 <div class="auth-form__group">
                                     <input type="text" name="tenKhu" class="auth-form__input" placeholder="Area name">
                                 </div>
@@ -412,16 +412,16 @@
                         <form method="post" th:action="@{/admin/khuvuc/edit}">
                             <div class="auth-form__form">
                                 <div class="auth-form__group">
-                                    <input type="text" name="maKhu" class="auth-form__input" placeholder="Area name" value="">
+                                    <input type="text" id="maKhu" name="maKhu" class="auth-form__input" placeholder="Area name" value="" readonly>
                                 </div>
                                 <div class="auth-form__group">
-                                    <input type="text" name="tenKhu" class="auth-form__input" placeholder="Area name" value="">
+                                    <input type="text" id="tenKhu" name="tenKhu" class="auth-form__input" placeholder="Area name" value="">
                                 </div>
                                 <div class="auth-form__group">
-                                    <input type="text" name="diaChi" class="auth-form__input" placeholder="Area address" value="">
+                                    <input type="text" id="diaChi" name="diaChi" class="auth-form__input" placeholder="Area address" value="">
                                 </div>
                                 <div class="auth-form__group">
-                                    <input type="text" name="donGia" class="auth-form__input" placeholder="Price" value="">
+                                    <input type="text" id="donGia" name="donGia" class="auth-form__input" placeholder="Price" value="">
                                 </div>
                             </div>
                             <div class="auth-form__controls">
@@ -484,7 +484,20 @@
             $(this).css("display", "none");
         });
     });
+    $(document).ready(function (){
+        $('.edit').on('click',function (event){
+            event.preventDefault();
 
+            var href = $(this).attr('href');
+            $.get(href, function (khuVuc, status){
+                $('#maKhu').val(khuVuc.maKhu);
+                $('#tenKhu').val(khuVuc.tenKhu);
+                $('#diaChi').val(khuVuc.diaChi);
+                $('#donGia').val(khuVuc.donGia);
+            })
+            $('form-edit').modal();
+        })
+    });
 </script>
 </body>
 </html>

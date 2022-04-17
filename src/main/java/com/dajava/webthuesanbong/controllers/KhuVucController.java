@@ -1,12 +1,9 @@
 package com.dajava.webthuesanbong.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.dajava.webthuesanbong.repositories.KhuVucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +41,9 @@ public class KhuVucController {
 	}
 	@GetMapping("/khuvuc/edit")
 	@ResponseBody
-	public KhuVuc edit(Integer id){
-		return khuVucRepository.getById(id);
+	public Object edit(Integer id){
+
+		return khuVucRepository.findById(id);
 	}
 	@PostMapping("/khuvuc/edit")
 	public String edit(KhuVuc khuVuc){
