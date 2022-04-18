@@ -1,6 +1,7 @@
 package com.dajava.webthuesanbong.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,10 @@ public class SanBongService {
 	//new sanbong
 	public void save(SanBong sanbong) {
 		sanbongRepository.save(sanbong);
+	}
+	
+	//get by id
+	public Optional<SanBong> findById(int maSan) {
+		return sanbongRepository.findById(maSan);
 	}
 }

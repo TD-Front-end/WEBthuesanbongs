@@ -540,6 +540,7 @@
 										<th>Thời gian Đặt</th>
 										<th>Thời gian trả</th>
 										<th>Tình trạng</th>
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody style="border: 1px soid;">
@@ -551,6 +552,12 @@
 										<td th:text="${sanbong.thoiGianDat}"></td>
 										<td th:text="${sanbong.thoiGianTra}"></td>
 										<td th:text="${sanbong.tinhTrang}"></td>
+										<td th:text="${sanbong.tinhTrang}"></td>
+										<td>
+										<div class="btn-group">
+                   							 <a th:href="@{/sanbongs/findById/(maSan=${sanbong.maSan})}" class="btn btn-primary" id="editButton">Chỉnh Sửa</a>
+                    					</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -641,6 +648,67 @@
 			</div>
 		</div>
 	</div>
+	
+	<!--edit San Bong-->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thôn tin sân</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/sanbongs/update}" method="put">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Sân:</label>
+							<input type="text" class="form-control" id="masanEdit" name="maSan" readonly>
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tên sân:</label>
+							<input type="text" class="form-control" id="nameEdit" name="tenSan">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="addressEdit" name="diaChi">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Diện tích:</label>
+							<input type="text" class="form-control" id="dientichEdit" name="dienTich">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Đơn giá:</label>
+							<input type="text" class="form-control" id="priceEdit" name="donGia">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Thời gian đặt:</label>
+							<input type="datetime-local" class="form-control" id="tgdatEdite" name="thoiGianDat">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Thời gian trả:</label>
+							<input type="datetime-local" class="form-control" id="tgTraEdit" name="thoiGianTra">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
+							<input type="text" class="form-control" id="makhuEdite" name="maKhu">
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tình Trạng:</label>
+							<input type="text" class="form-control" id="tinhtrangEdit" name="tinhTrang">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -654,6 +722,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/sanbong.js"></script>
 	<!-- boostap -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
