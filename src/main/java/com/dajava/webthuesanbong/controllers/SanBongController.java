@@ -17,34 +17,34 @@ import com.dajava.webthuesanbong.services.SanBongService;
 
 @Controller
 public class SanBongController {
-	@Autowired
-	private SanBongService sanbongService;
+//	@Autowired
+//	private SanBongService sanbongService;
 	
 	@GetMapping("/sanbongs")
 	public String getSanBong(Model model) {
 		
-		List<SanBong> sanbongList = sanbongService.getSanBong();
-		
-		model.addAttribute("sanbongs", sanbongList);
+//		List<SanBong> sanbongList = sanbongService.getSanBong();
+//
+//		model.addAttribute("sanbongs", sanbongList);
 		return "sanbong";
 	}
 	//add new sanbong
-	@PostMapping("/sanbongs/addNew")
-	public String addNew(SanBong sanbong) {
-		sanbongService.save(sanbong);
-		return "redirect:/sanbongs";
-	}
-	
-	//
-	@RequestMapping("sanbongs/findById")
-	@ResponseBody
-	public Optional<SanBong> findById(int maSan) {
-		return sanbongService.findById(maSan);
-	}
-	//update
-	@RequestMapping(value="/sanbongs/update", method= {RequestMethod.PUT, RequestMethod.GET})
-	public String update(SanBong sanbong) {
-		sanbongService.save(sanbong);
-		return "redirect:/sanbongs";
-	}
+//	@PostMapping("/sanbongs/addNew")
+//	public String addNew(SanBong sanbong) {
+//		sanbongService.save(sanbong);
+//		return "redirect:/sanbongs";
+//	}
+//
+//	//
+//	@RequestMapping("sanbongs/findById")
+//	@ResponseBody
+//	public Optional<SanBong> findById(int maSan) {
+//		return sanbongService.findById(maSan);
+//	}
+//	//update
+//	@RequestMapping(value="/sanbongs/update", method= {RequestMethod.PUT, RequestMethod.GET})
+//	public String update(SanBong sanbong) {
+//		sanbongService.save(sanbong);
+//		return "redirect:/sanbongs";
+//	}
 }

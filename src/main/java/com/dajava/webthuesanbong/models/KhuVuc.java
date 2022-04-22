@@ -2,13 +2,7 @@ package com.dajava.webthuesanbong.models;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,32 +15,34 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "khuvuc")
 public class KhuVuc {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer maKhu;	
-	private String tenKhu;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "MaKhuVuc", nullable = false)
+	private Integer id;
+
+	@Column(name = "TenKhuVuc")
+	private String tenKhuVuc;
+
+	@Column(name = "DiaChi")
 	private String diaChi;
-    private Double donGia;
-    
-    @OneToMany(mappedBy="khuvuc")
-	private List<SanBong> sanbongs;
-    //
-    public Integer getMaKhu() {
-		return maKhu;
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setMaKhu(Integer makhu) {
-		this.maKhu = makhu;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getTenKhu() {
-		return tenKhu;
+	public String getTenKhuVuc() {
+		return tenKhuVuc;
 	}
 
-	public void setTenKhu(String tenKhu) {
-		this.tenKhu = tenKhu;
+	public void setTenKhuVuc(String tenKhuVuc) {
+		this.tenKhuVuc = tenKhuVuc;
 	}
 
 	public String getDiaChi() {
@@ -57,21 +53,6 @@ public class KhuVuc {
 		this.diaChi = diaChi;
 	}
 
-	public Double getDonGia() {
-		return donGia;
-	}
 
-	public void setDonGia(Double donGia) {
-		this.donGia = donGia;
-	}
-
-	public List<SanBong> getSanbongs() {
-		return sanbongs;
-	}
-
-	public void setSanbongs(List<SanBong> sanbongs) {
-		this.sanbongs = sanbongs;
-	}
-    
 
 }

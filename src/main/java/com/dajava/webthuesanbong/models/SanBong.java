@@ -4,13 +4,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,76 +24,94 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "maSan")
 public class SanBong {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer maSan;
-	private String tenSan;
-	private String dienTich;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime thoiGianDat;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime thoiGianTra;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "MaSanBong", nullable = false)
+	private Integer id;
+
+	@Column(name = "TenSanBong", nullable = false)
+	private String tenSanBong;
+
+	@Column(name = "AnhSan")
+	private String anhSan;
+
+	@Column(name = "DiaChi")
 	private String diaChi;
-	private String tinhTrang;
+
+	@Column(name = "ChieuRong")
+	private Integer chieuRong;
+
+	@Column(name = "ChieuDai")
+	private Integer chieuDai;
+
+	@Column(name = "DonGia", nullable = false)
 	private Double donGia;
-	@ManyToOne
-	@JoinColumn(name="maKhu", insertable=false, updatable=false)
-	private KhuVuc khuvuc;
-	private int maKhu;
-	//
-	public Integer getMaSan() {
-		return maSan;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "MaKhuVuc", nullable = false)
+	private KhuVuc maKhuVuc;
+
+	public Integer getId() {
+		return id;
 	}
-	public void setMaSan(Integer maSan) {
-		this.maSan = maSan;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getTenSan() {
-		return tenSan;
+
+	public String getTenSanBong() {
+		return tenSanBong;
 	}
-	public void setTenSan(String tenSan) {
-		this.tenSan = tenSan;
+
+	public void setTenSanBong(String tenSanBong) {
+		this.tenSanBong = tenSanBong;
 	}
-	public String getDienTich() {
-		return dienTich;
+
+	public String getAnhSan() {
+		return anhSan;
 	}
-	public void setDienTich(String dienTich) {
-		this.dienTich = dienTich;
+
+	public void setAnhSan(String anhSan) {
+		this.anhSan = anhSan;
 	}
-	
+
 	public String getDiaChi() {
 		return diaChi;
 	}
+
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-	public String getTinhTrang() {
-		return tinhTrang;
+
+	public Integer getChieuRong() {
+		return chieuRong;
 	}
-	public void setTinhTrang(String tinhTrang) {
-		this.tinhTrang = tinhTrang;
+
+	public void setChieuRong(Integer chieuRong) {
+		this.chieuRong = chieuRong;
 	}
+
+	public Integer getChieuDai() {
+		return chieuDai;
+	}
+
+	public void setChieuDai(Integer chieuDai) {
+		this.chieuDai = chieuDai;
+	}
+
 	public Double getDonGia() {
 		return donGia;
 	}
+
 	public void setDonGia(Double donGia) {
 		this.donGia = donGia;
 	}
-	public int getMaKhu() {
-		return maKhu;
+
+	public KhuVuc getMaKhuVuc() {
+		return maKhuVuc;
 	}
-	public void setMaKhu(int maKhu) {
-		this.maKhu = maKhu;
-	}
-	public LocalDateTime getThoiGianDat() {
-		return thoiGianDat;
-	}
-	public void setThoiGianDat(LocalDateTime thoiGianDat) {
-		this.thoiGianDat = thoiGianDat;
-	}
-	public LocalDateTime getThoiGianTra() {
-		return thoiGianTra;
-	}
-	public void setThoiGianTra(LocalDateTime thoiGianTra) {
-		this.thoiGianTra = thoiGianTra;
+
+	public void setMaKhuVuc(KhuVuc maKhuVuc) {
+		this.maKhuVuc = maKhuVuc;
 	}
 	
 }

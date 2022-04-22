@@ -530,37 +530,37 @@
 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addModal">Thêm Sân Bóng</button>
 							<!-- Table with stripped rows -->
-							<table class="table datatable">
-								<thead>
-									<tr>
-										<th>Mã Sân</th>
-										<th>Tên Sân</th>
-										<th>Diện tích</th>
-										<th>Đơn Giá</th>
-										<th>Thời gian Đặt</th>
-										<th>Thời gian trả</th>
-										<th>Tình trạng</th>
-										<th>Actions</th>
-									</tr>
-								</thead>
-								<tbody style="border: 1px soid;">
-									<tr th:each="sanbong:${sanbongs}">
-										<td th:text="${sanbong.maSan}"></td>
-										<td th:text="${sanbong.tenSan}"></td>
-										<td th:text="${sanbong.dienTich}"></td>
-										<td th:text="${sanbong.donGia}"></td>
-										<td th:text="${sanbong.thoiGianDat}"></td>
-										<td th:text="${sanbong.thoiGianTra}"></td>
-										<td th:text="${sanbong.tinhTrang}"></td>
-										<td th:text="${sanbong.tinhTrang}"></td>
-										<td>
-										<div class="btn-group">
-                   							 <a th:href="@{/sanbongs/findById/(maSan=${sanbong.maSan})}" class="btn btn-primary" id="editButton">Chỉnh Sửa</a>
-                    					</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+<!--							<table class="table datatable">-->
+<!--								<thead>-->
+<!--									<tr>-->
+<!--										<th>Mã Sân</th>-->
+<!--										<th>Tên Sân</th>-->
+<!--										<th>Diện tích</th>-->
+<!--										<th>Đơn Giá</th>-->
+<!--										<th>Thời gian Đặt</th>-->
+<!--										<th>Thời gian trả</th>-->
+<!--										<th>Tình trạng</th>-->
+<!--										<th>Actions</th>-->
+<!--									</tr>-->
+<!--								</thead>-->
+<!--								<tbody style="border: 1px soid;">-->
+<!--									<tr th:each="sanbong:${sanbongs}">-->
+<!--										<td th:text="${sanbong.maSan}"></td>-->
+<!--										<td th:text="${sanbong.tenSan}"></td>-->
+<!--										<td th:text="${sanbong.dienTich}"></td>-->
+<!--										<td th:text="${sanbong.donGia}"></td>-->
+<!--										<td th:text="${sanbong.thoiGianDat}"></td>-->
+<!--										<td th:text="${sanbong.thoiGianTra}"></td>-->
+<!--										<td th:text="${sanbong.tinhTrang}"></td>-->
+<!--										<td th:text="${sanbong.tinhTrang}"></td>-->
+<!--										<td>-->
+<!--										<div class="btn-group">-->
+<!--                   							 <a th:href="@{/sanbongs/findById/(maSan=${sanbong.maSan})}" class="btn btn-primary" id="editButton">Chỉnh Sửa</a>-->
+<!--                    					</div>-->
+<!--										</td>-->
+<!--									</tr>-->
+<!--								</tbody>-->
+<!--							</table>-->
 							<!-- End Table with stripped rows -->
 
 						</div>

@@ -15,40 +15,40 @@ import com.dajava.webthuesanbong.services.KhuVucService;
 @RequestMapping("/admin")
 public class KhuVucController {
 
-	@Autowired
-	private KhuVucService khuvucService;
-	@Autowired
-	private KhuVucRepository khuVucRepository;
+//	@Autowired
+//	private KhuVucService khuvucService;
+//	@Autowired
+//	private KhuVucRepository khuVucRepository;
 
-	@GetMapping(value = "/khuvuc/main")
-	public String getKhuVuc(Model model) {
-
-		List<KhuVuc> khuvucList = khuvucService.getKhuVuc();
-		model.addAttribute("khuvucs", khuvucList);
-		return "admin/khuvuc";
-	}
-
-	@PostMapping("/khuvuc/create")
-	public String create(@ModelAttribute KhuVuc khuVuc){
-		khuVucRepository.save(khuVuc);
-		return "redirect:/admin/khuvuc/main";
-	}
-
-	@GetMapping("/khuvuc/delete")
-	public String create(@RequestParam("id") int id){
-		khuVucRepository.deleteById(id);
-		return "redirect:/admin/khuvuc/main";
-	}
-	@GetMapping("/khuvuc/edit")
-	@ResponseBody
-	public Object edit(Integer id){
-
-		return khuVucRepository.findById(id);
-	}
-	@PostMapping("/khuvuc/edit")
-	public String edit(KhuVuc khuVuc){
-		khuVucRepository.save(khuVuc);
-		return "redirect:/admin/khuvuc/main";
-	}
+//	@GetMapping(value = "/khuvuc/main")
+//	public String getKhuVuc(Model model) {
+//
+//		List<KhuVuc> khuvucList = khuvucService.getKhuVuc();
+//		model.addAttribute("khuvucs", khuvucList);
+//		return "admin/khuvuc";
+//	}
+//
+//	@PostMapping("/khuvuc/create")
+//	public String create(@ModelAttribute KhuVuc khuVuc){
+//		khuVucRepository.save(khuVuc);
+//		return "redirect:/admin/khuvuc/main";
+//	}
+//
+//	@GetMapping("/khuvuc/delete")
+//	public String create(@RequestParam("id") int id){
+//		khuVucRepository.deleteById(id);
+//		return "redirect:/admin/khuvuc/main";
+//	}
+//	@GetMapping("/khuvuc/edit")
+//	@ResponseBody
+//	public Object edit(Integer id){
+//
+//		return khuVucRepository.findById(id);
+//	}
+//	@PostMapping("/khuvuc/edit")
+//	public String edit(KhuVuc khuVuc){
+//		khuVucRepository.save(khuVuc);
+//		return "redirect:/admin/khuvuc/main";
+//	}
 
 }

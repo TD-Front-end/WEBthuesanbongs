@@ -12,20 +12,20 @@ import com.dajava.webthuesanbong.repositories.SanBongRepository;
 
 @Service
 public class SanBongService {
-	@Autowired
-	private SanBongRepository sanbongRepository;
-	
-	//hiển thị list KhuVuc
-	public List<SanBong> getSanBong(){
-		return sanbongRepository.findAll();
-	}
-	//new sanbong
-	public void save(SanBong sanbong) {
-		sanbongRepository.save(sanbong);
-	}
-	
-	//get by id
-	public Optional<SanBong> findById(int maSan) {
-		return sanbongRepository.findById(maSan);
-	}
+//	@Autowired
+//	private SanBongRepository sanbongRepository;
+//
+//	//hiển thị list KhuVuc
+//	public List<SanBong> getSanBong(){
+//		return sanbongRepository.findAll();
+//	}
+//	//new sanbong
+//	public void save(SanBong sanbong) {
+//		sanbongRepository.save(sanbong);
+//	}
+//
+//	//get by id
+//	public Optional<SanBong> findById(int maSan) {
+//		return sanbongRepository.findById(maSan);
+//	}
 }
