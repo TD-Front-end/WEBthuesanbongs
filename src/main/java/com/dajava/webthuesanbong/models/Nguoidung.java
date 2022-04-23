@@ -32,8 +32,12 @@ public class Nguoidung {
 	private String matKhau;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "MaVaiTro", nullable = false)
-	private Vaitro maVaiTro;
+	@JoinColumn(name = "MaVaiTro", insertable=false, updatable=false)
+	private Vaitro vaitro;
+
+
+	private int MaVaiTro;
+
 
 	public Integer getId() {
 		return id;
@@ -75,12 +79,16 @@ public class Nguoidung {
 		this.matKhau = matKhau;
 	}
 
-	public Vaitro getMaVaiTro() {
-		return maVaiTro;
+	public int getMaVaiTro() {
+		return MaVaiTro;
 	}
 
-	public void setMaVaiTro(Vaitro maVaiTro) {
-		this.maVaiTro = maVaiTro;
+	public void setMaVaiTro(int maVaiTro) {
+		this.MaVaiTro = maVaiTro;
 	}
+
+
+
+
 
 }

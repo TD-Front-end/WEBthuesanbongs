@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,10 @@ public class KhuVuc {
 
 	@Column(name = "DiaChi")
 	private String diaChi;
+
+	@OneToMany(mappedBy="khuvuc")
+	private List<SanBong> sanbongs;
+
 
 	public Integer getId() {
 		return id;

@@ -17,15 +17,15 @@ import com.dajava.webthuesanbong.services.SanBongService;
 
 @Controller
 public class SanBongController {
-//	@Autowired
-//	private SanBongService sanbongService;
+	@Autowired
+	private SanBongService sanbongService;
 	
 	@GetMapping("/sanbongs")
 	public String getSanBong(Model model) {
 		
-//		List<SanBong> sanbongList = sanbongService.getSanBong();
+		List<SanBong> sanbongList = sanbongService.getSanBong();
 //
-//		model.addAttribute("sanbongs", sanbongList);
+		model.addAttribute("sanbongs", sanbongList);
 		return "sanbong";
 	}
 	//add new sanbong

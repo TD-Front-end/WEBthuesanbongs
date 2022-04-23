@@ -47,8 +47,9 @@ public class SanBong {
 	private Double donGia;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "MaKhuVuc", nullable = false)
-	private KhuVuc maKhuVuc;
+	@JoinColumn(name = "MaKhuVuc", insertable=false, updatable=false)
+	private KhuVuc khuvuc;
+	private int MaKhuVuc;
 
 	public Integer getId() {
 		return id;
@@ -106,12 +107,13 @@ public class SanBong {
 		this.donGia = donGia;
 	}
 
-	public KhuVuc getMaKhuVuc() {
-		return maKhuVuc;
+	public int getMaKhuVuc() {
+		return MaKhuVuc;
 	}
 
-	public void setMaKhuVuc(KhuVuc maKhuVuc) {
-		this.maKhuVuc = maKhuVuc;
+	public void setMaKhuVuc(int makhu) {
+		this.MaKhuVuc = makhu;
 	}
+
 	
 }

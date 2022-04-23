@@ -25,6 +25,12 @@ public class Chitietphieudat {
     @Column(name = "GioKetThuc")
     private Instant gioKetThuc;
 
+    @Column(name = "DonGia", nullable = false)
+    private Double donGia;
+
+    @Column(name = "SoLuong", nullable = false)
+    private int soLuong;
+
     public ChitietphieudatId getId() {
         return id;
     }
@@ -64,4 +70,22 @@ public class Chitietphieudat {
     public void setGioKetThuc(Instant gioKetThuc) {
         this.gioKetThuc = gioKetThuc;
     }
+
+
+    public Double getDonGia() {
+        return donGia;
+    }
+
+    public void setDonGia(Double donGia) {
+        this.donGia = donGia;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
 }

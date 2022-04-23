@@ -2,6 +2,7 @@ package com.dajava.webthuesanbong.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "vaitro")
@@ -21,6 +22,10 @@ public class Vaitro {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @OneToMany(mappedBy ="vaitro")
+    private List<Nguoidung> nguoidungs;
+
 
     public String getTenVaiTro() {
         return tenVaiTro;

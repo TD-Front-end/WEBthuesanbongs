@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -530,37 +530,41 @@
 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addModal">Thêm Sân Bóng</button>
 							<!-- Table with stripped rows -->
-<!--							<table class="table datatable">-->
-<!--								<thead>-->
-<!--									<tr>-->
-<!--										<th>Mã Sân</th>-->
-<!--										<th>Tên Sân</th>-->
-<!--										<th>Diện tích</th>-->
-<!--										<th>Đơn Giá</th>-->
-<!--										<th>Thời gian Đặt</th>-->
-<!--										<th>Thời gian trả</th>-->
-<!--										<th>Tình trạng</th>-->
+							<table class="table datatable">
+								<thead>
+									<tr>
+										<th>Mã Sân</th>
+										<th>Tên Sân</th>
+										<th>Ảnh Sân</th>
+										<th>Chiều dài</th>
+										<th>Chiều rộng</th>
+										<th>Địa chỉ</th>
+										<th>Đơn giá</th>
+										<th>Mã khu vực</th>
 <!--										<th>Actions</th>-->
-<!--									</tr>-->
-<!--								</thead>-->
-<!--								<tbody style="border: 1px soid;">-->
-<!--									<tr th:each="sanbong:${sanbongs}">-->
-<!--										<td th:text="${sanbong.maSan}"></td>-->
-<!--										<td th:text="${sanbong.tenSan}"></td>-->
-<!--										<td th:text="${sanbong.dienTich}"></td>-->
-<!--										<td th:text="${sanbong.donGia}"></td>-->
-<!--										<td th:text="${sanbong.thoiGianDat}"></td>-->
-<!--										<td th:text="${sanbong.thoiGianTra}"></td>-->
-<!--										<td th:text="${sanbong.tinhTrang}"></td>-->
-<!--										<td th:text="${sanbong.tinhTrang}"></td>-->
+									</tr>
+								</thead>
+								<tbody style="border: 1px soid;">
+									<tr th:each="sanbong:${sanbongs}">
+										<td th:text="${sanbong.id}"></td>
+										<td th:text="${sanbong.tenSanBong}"></td>
+										<td>
+											<img th:src="${sanbong.anhSan}" width="250px" height="200px">
+										</td>
+
+										<td th:text="${sanbong.chieuDai}"></td>
+										<td th:text="${sanbong.chieuRong}"></td>
+										<td th:text="${sanbong.diaChi}"></td>
+										<td th:text="${sanbong.donGia}"></td>
+										<td th:text="${sanbong.MaKhuVuc}"></td>
 <!--										<td>-->
 <!--										<div class="btn-group">-->
 <!--                   							 <a th:href="@{/sanbongs/findById/(maSan=${sanbong.maSan})}" class="btn btn-primary" id="editButton">Chỉnh Sửa</a>-->
 <!--                    					</div>-->
 <!--										</td>-->
-<!--									</tr>-->
-<!--								</tbody>-->
-<!--							</table>-->
+									</tr>
+								</tbody>
+							</table>
 							<!-- End Table with stripped rows -->
 
 						</div>
