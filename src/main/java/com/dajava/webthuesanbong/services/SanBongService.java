@@ -20,12 +20,16 @@ public class SanBongService {
 		return sanbongRepository.findAll();
 	}
 //	//new sanbong
-//	public void save(SanBong sanbong) {
-//		sanbongRepository.save(sanbong);
-//	}
+	public void save(SanBong sanbong) {
+		sanbongRepository.save(sanbong);
+	}
 //
 //	//get by id
-//	public Optional<SanBong> findById(int maSan) {
-//		return sanbongRepository.findById(maSan);
-//	}
+	public Optional<SanBong> findById(int id) {
+		return sanbongRepository.findById(id);
+	}
+	//	delete
+	public void delete (int id) {
+		sanbongRepository.deleteById(id);
+	}
 }

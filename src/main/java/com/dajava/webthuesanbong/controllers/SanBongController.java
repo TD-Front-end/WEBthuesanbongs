@@ -29,22 +29,27 @@ public class SanBongController {
 		return "sanbong";
 	}
 	//add new sanbong
-//	@PostMapping("/sanbongs/addNew")
-//	public String addNew(SanBong sanbong) {
-//		sanbongService.save(sanbong);
-//		return "redirect:/sanbongs";
-//	}
+	@PostMapping("/sanbongs/addNew")
+	public String addNew(SanBong sanbong) {
+		sanbongService.save(sanbong);
+		return "redirect:/sanbongs";
+	}
 //
-//	//
-//	@RequestMapping("sanbongs/findById")
-//	@ResponseBody
-//	public Optional<SanBong> findById(int maSan) {
-//		return sanbongService.findById(maSan);
-//	}
-//	//update
-//	@RequestMapping(value="/sanbongs/update", method= {RequestMethod.PUT, RequestMethod.GET})
-//	public String update(SanBong sanbong) {
-//		sanbongService.save(sanbong);
-//		return "redirect:/sanbongs";
-//	}
+	@RequestMapping("sanbongs/findById")
+	@ResponseBody
+	public Optional<SanBong> findById(int id) {
+		return sanbongService.findById(id);
+	}
+//	//update san
+	@RequestMapping(value="/sanbongs/update", method= {RequestMethod.PUT, RequestMethod.GET})
+	public String update(SanBong sanbong) {
+		sanbongService.save(sanbong);
+		return "redirect:/sanbongs";
+	}
+	//delete
+	@RequestMapping(value="/sanbongs/delete", method= {RequestMethod.DELETE, RequestMethod.GET})
+	public String delete(int id) {
+		sanbongService.delete(id);
+		return "redirect:/sanbongs";
+	}
 }

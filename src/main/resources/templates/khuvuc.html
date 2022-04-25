@@ -5,9 +5,12 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Tables / Data - NiceAdmin Bootstrap Template</title>
+	<title>khuvucs</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
+	<!--js format	-->
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/jquerymin.js"></script>
 
 	<!-- Favicons -->
 	<link href="assets/img/favicon.png" rel="icon">
@@ -275,7 +278,7 @@
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="index.html">
 					<i class="bi bi-grid"></i>
-					<span>Dashboard</span>
+					<span>Trang chủ</span>
 				</a>
 			</li><!-- End Dashboard Nav -->
 
@@ -360,12 +363,12 @@
 
 			<li class="nav-item">
 				<a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-					<i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+					<i class="bi bi-journal-text"></i><span>Khu vực</span><i class="bi bi-chevron-down ms-auto"></i>
 				</a>
 				<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 					<li>
-						<a href="forms-elements.html">
-							<i class="bi bi-circle"></i><span>Form Elements</span>
+						<a href="khuvuc.html">
+							<i class="bi bi-circle"></i><span>Chi tiết khu vực</span>
 						</a>
 					</li>
 					<li>
@@ -388,13 +391,13 @@
 
 			<li class="nav-item">
 				<a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-					<i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
+					<i class="bi bi-layout-text-window-reverse"></i><span>Sân bóng</span><i
 						class="bi bi-chevron-down ms-auto"></i>
 				</a>
 				<ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
 					<li>
-						<a href="tables-general.html">
-							<i class="bi bi-circle"></i><span>General Tables</span>
+						<a href="/khuvucs">
+							<i class="bi bi-circle"></i><span>Chi tiết sân</span>
 						</a>
 					</li>
 					<li>
@@ -517,25 +520,27 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Thông tin Khu Vực</h5>
-<!--							<table class="table datatable">-->
-<!--								<thead>-->
-<!--									<tr>-->
-<!--										<th>Mã khu</th>-->
-<!--										<th>Tên Khu</th>-->
-<!--										<th>Địa chỉ</th>-->
-<!--										<th>Đơn Giá</th>-->
-<!--									</tr>-->
-<!--								</thead>-->
-<!--								<tbody style="border: 1px soid;">-->
-<!--									<tr th:each="khuvuc:${khuvucs}">-->
-<!--										<td th:text="${khuvuc.maKhu}"></td>-->
-<!--										<td th:text="${khuvuc.tenKhu}"></td>-->
-<!--										<td th:text="${khuvuc.diaChi}"></td>-->
-<!--										<td th:text="${khuvuc.donGia}"></td>-->
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+									data-target="#addModal">Thêm khu vực</button>
+							<table class="table datatable">
+								<thead>
+									<tr>
+										<th>Mã khu</th>
+										<th>Tên Khu</th>
+										<th>Địa chỉ</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody style="border: 1px soid;">
+									<tr th:each="khuvuc:${khuvucs}">
+										<td th:text="${khuvuc.id}"></td>
+										<td th:text="${khuvuc.tenKhuVuc}"></td>
+										<td th:text="${khuvuc.diaChi}"></td>
+										<td></td>
 
-<!--									</tr>-->
-<!--								</tbody>-->
-<!--							</table>-->
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -561,6 +566,54 @@
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
 			class="bi bi-arrow-up-short"></i></a>
 
+	<!--new khu vuc-->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Thêm khu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/khuvucs/addNew}" method="post">
+						<!--<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Sân:</label>
+							<input type="text" class="form-control" id="recipient-name" name="maSan">
+						</div>-->
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tên khu:</label>
+							<input type="text" class="form-control" id="recipient-name" name="tenKhuVuc">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="recipient-name" name="diaChi">
+						</div>
+
+<!--						<div class="form-group">-->
+<!--							<label for="recipient-name" class="col-form-label">Mã Khu:</label>-->
+<!--							&lt;!&ndash;							<select th:each="sanbong:${sanbongs}">&ndash;&gt;-->
+<!--							&lt;!&ndash;								<option th:text="${sanbong.MaKhuVuc}">&ndash;&gt;-->
+
+<!--							&lt;!&ndash;								</option>&ndash;&gt;-->
+<!--							&lt;!&ndash;							</select>&ndash;&gt;-->
+<!--							<input type="text" class="form-control" id="recipient-name" name="id">-->
+<!--						</div>-->
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Thêm</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -573,6 +626,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/khuvucs.js"></script>
 	<!-- boostap -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

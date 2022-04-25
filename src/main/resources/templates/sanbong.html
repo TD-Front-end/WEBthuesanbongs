@@ -5,13 +5,19 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Tables / Data - NiceAdmin Bootstrap Template</title>
+	<title>AddNewSanBongs</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
-
+<!--js format	-->
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/jquerymin.js"></script>
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
 	<!-- Favicons -->
 	<link href="assets/img/favicon.png" rel="icon">
 	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- font icon -->
+	<link href="css/elegant-icons-style.css" rel="stylesheet" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.gstatic.com" rel="preconnect">
@@ -276,7 +282,7 @@
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="index.html">
 					<i class="bi bi-grid"></i>
-					<span>Dashboard</span>
+					<span>Trang chủ</span>
 				</a>
 			</li><!-- End Dashboard Nav -->
 
@@ -361,12 +367,12 @@
 
 			<li class="nav-item">
 				<a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-					<i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+					<i class="bi bi-journal-text"></i><span>Khu Vực</span><i class="bi bi-chevron-down ms-auto"></i>
 				</a>
 				<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 					<li>
-						<a href="forms-elements.html">
-							<i class="bi bi-circle"></i><span>Form Elements</span>
+						<a href="khuvuc.html">
+							<i class="bi bi-circle"></i><span>Chi tiết khu</span>
 						</a>
 					</li>
 					<li>
@@ -389,18 +395,14 @@
 
 			<li class="nav-item">
 				<a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-					<i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
+					<i class="bi bi-layout-text-window-reverse"></i><span>Sân bóng</span><i
 						class="bi bi-chevron-down ms-auto"></i>
 				</a>
 				<ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+
 					<li>
-						<a href="tables-general.html">
-							<i class="bi bi-circle"></i><span>General Tables</span>
-						</a>
-					</li>
-					<li>
-						<a href="tables-data.html" class="active">
-							<i class="bi bi-circle"></i><span>Data Tables</span>
+						<a href="sanbong.html" class="active">
+							<i class="bi bi-circle"></i><span>Chi Tiết Sân</span>
 						</a>
 					</li>
 				</ul>
@@ -529,6 +531,7 @@
 							<h5 class="card-title">Thông tin sân bóng</h5>
 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#addModal">Thêm Sân Bóng</button>
+
 							<!-- Table with stripped rows -->
 							<table class="table datatable">
 								<thead>
@@ -541,7 +544,7 @@
 										<th>Địa chỉ</th>
 										<th>Đơn giá</th>
 										<th>Mã khu vực</th>
-<!--										<th>Actions</th>-->
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody style="border: 1px soid;">
@@ -557,11 +560,13 @@
 										<td th:text="${sanbong.diaChi}"></td>
 										<td th:text="${sanbong.donGia}"></td>
 										<td th:text="${sanbong.MaKhuVuc}"></td>
-<!--										<td>-->
-<!--										<div class="btn-group">-->
-<!--                   							 <a th:href="@{/sanbongs/findById/(maSan=${sanbong.maSan})}" class="btn btn-primary" id="editButton">Chỉnh Sửa</a>-->
-<!--                    					</div>-->
-<!--										</td>-->
+										<td>
+											<div class="btn-group">
+												<a th:href="@{/sanbongs/findById/(id=${sanbong.id})}" class="btn btn-primary" id="editButton"  >Sửa</a>
+												<a class="btn btn-success" id="detailButton">Chi tiết</a>
+												<a th:href="@{/sanbongs/delete/(id=${sanbong.id})}" class="btn btn-danger" id="deleteButton">Xoá</a>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -598,7 +603,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Thêm sân</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -611,36 +616,48 @@
 						</div>-->
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Tên sân:</label>
-							<input type="text" class="form-control" id="recipient-name" name="tenSan">
+							<input type="text" class="form-control" id="recipient-name" name="tenSanBong">
 						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
+<!--							<select th:each="sanbong:${sanbongs}">-->
+<!--								<option th:text="${sanbong.MaKhuVuc}">-->
+
+<!--								</option>-->
+<!--							</select>-->
+							<input type="text" class="form-control" id="recipient-name" name="MaKhuVuc">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Ảnh sân:</label>
+							<input type="text" class="form-control" id="recipient-name" name="anhSan">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Chiều dài:</label>
+							<input type="text" class="form-control" id="recipient-name" name="chieuDai">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Chiều rộng:</label>
+							<input type="text" class="form-control" id="recipient-name" name="chieuRong">
+						</div>
+
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
 							<input type="text" class="form-control" id="recipient-name" name="diaChi">
 						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Diện tích:</label>
-							<input type="text" class="form-control" id="recipient-name" name="dienTich">
-						</div>
+
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Đơn giá:</label>
 							<input type="text" class="form-control" id="recipient-name" name="donGia">
 						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Thời gian đặt:</label>
-							<input type="datetime-local" class="form-control" id="recipient-name" name="thoiGianDat">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Thời gian trả:</label>
-							<input type="datetime-local" class="form-control" id="recipient-name" name="thoiGianTra">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
-							<input type="text" class="form-control" id="recipient-name" name="maKhu">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Tình Trạng:</label>
-							<input type="text" class="form-control" id="recipient-name" name="tinhTrang">
-						</div>
+
+<!--						<div class="form-group">-->
+<!--							<label for="recipient-name" class="col-form-label">Thời gian trả:</label>-->
+<!--							<input type="datetime-local" class="form-control" id="recipient-name" name="thoiGianTra">-->
+<!--						</div>-->
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Thêm</button>
 						</div>
@@ -655,11 +672,11 @@
 	
 	<!--edit San Bong-->
 	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
+		aria-hidden="true" data-toogle="modal">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thôn tin sân</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Cập Nhật Sân</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -668,39 +685,46 @@
 					<form th:action="@{/sanbongs/update}" method="put">
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Mã Sân:</label>
-							<input type="text" class="form-control" id="masanEdit" name="maSan" readonly>
+							<input type="text" class="form-control" id="masanEdit" name="id" readonly>
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Tên sân:</label>
-							<input type="text" class="form-control" id="nameEdit" name="tenSan">
+							<input type="text" class="form-control" id="tensanEdit" name="tenSanBong">
 						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
-							<input type="text" class="form-control" id="addressEdit" name="diaChi">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Diện tích:</label>
-							<input type="text" class="form-control" id="dientichEdit" name="dienTich">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Đơn giá:</label>
-							<input type="text" class="form-control" id="priceEdit" name="donGia">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Thời gian đặt:</label>
-							<input type="datetime-local" class="form-control" id="tgdatEdite" name="thoiGianDat">
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Thời gian trả:</label>
-							<input type="datetime-local" class="form-control" id="tgTraEdit" name="thoiGianTra">
-						</div>
+
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
-							<input type="text" class="form-control" id="makhuEdite" name="maKhu">
+							<!--							<select th:each="sanbong:${sanbongs}">-->
+							<!--								<option th:text="${sanbong.MaKhuVuc}">-->
+
+							<!--								</option>-->
+							<!--							</select>-->
+							<input type="text" class="form-control" id="makhuEdit" name="MaKhuVuc">
 						</div>
+
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Tình Trạng:</label>
-							<input type="text" class="form-control" id="tinhtrangEdit" name="tinhTrang">
+							<label for="recipient-name" class="col-form-label">Ảnh sân:</label>
+							<input type="text" class="form-control" id="anhsanEdit" name="anhSan">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Chiều dài:</label>
+							<input type="text" class="form-control" id="chieudaiEdit" name="chieuDai">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Chiều rộng:</label>
+							<input type="text" class="form-control" id="chieurongEdit" name="chieuRong">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="diachiEdit" name="diaChi">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Đơn giá:</label>
+							<input type="text" class="form-control" id="dongiaEdit" name="donGia">
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Chỉnh sửa</button>
@@ -714,6 +738,26 @@
 		</div>
 	</div>
 
+	<!--delete modal	-->
+	<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Xoá sân bóng </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Bạn có chắc muốn xoá sân bóng này?</p>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" id="confirmDeleteButton" href="" >Xoá</a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -726,11 +770,12 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
-	<script src="assets/js/sanbong.js"></script>
+
+	<script src="assets/js/editsanbong.js"></script>
 	<!-- boostap -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
+<!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
+<!--		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+<!--		crossorigin="anonymous"></script>-->
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
