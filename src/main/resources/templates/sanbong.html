@@ -563,7 +563,7 @@
 										<td>
 											<div class="btn-group">
 												<a th:href="@{/sanbongs/findById/(id=${sanbong.id})}" class="btn btn-primary" id="editButton"  >Sửa</a>
-												<a class="btn btn-success" id="detailButton">Chi tiết</a>
+												<a class="btn btn-success" id="detailsButton" th:href="@{/sanbongs/findById/(id=${sanbong.id})}">Chi tiết</a>
 												<a th:href="@{/sanbongs/delete/(id=${sanbong.id})}" class="btn btn-danger" id="deleteButton">Xoá</a>
 											</div>
 										</td>
@@ -620,13 +620,13 @@
 						</div>
 
 						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">Mã Khu:</label>
-<!--							<select th:each="sanbong:${sanbongs}">-->
-<!--								<option th:text="${sanbong.MaKhuVuc}">-->
-
-<!--								</option>-->
-<!--							</select>-->
-							<input type="text" class="form-control" id="recipient-name" name="MaKhuVuc">
+							<label for="ddlSanbongDetail" class="col-form-label">Mã Khu:</label>
+							<select class="form-control" id="ddlSanbongDetail" name="MaKhuVuc">
+								<option>---Khu Vực---</option>
+								<option th:each="khuvuc:${khuvucs}" th:value="${khuvuc.id}" th:text="${khuvuc.tenKhuVuc}">
+								</option>
+							</select>
+<!--							<input type="text" class="form-control" id="recipient-name" name="MaKhuVuc">-->
 						</div>
 
 						<div class="form-group">
@@ -736,6 +736,73 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!--detail San Bong-->
+	<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<form>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="detailsModalLabel">Chi tiết sân</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label class="col-form-label">Mã Sân:</label>
+							<input type="text" class="form-control" id="idDetails" name="id" readonly>
+						</div>
+
+						<div class="form-group">
+							<label class="col-form-label" for="tensanDetails">Tên sân</label>
+							<input type="text" class="form-control" id="tensanDetails" name="tenSanBong" required>
+						</div>
+						<div class="form-group">
+							<label for="ddlkhuvucDetails" class="col-form-label">Khu Vực: </label>
+							<select class="form-control" id="ddlkhuvucDetails" name="MaKhuVuc">
+								<option>-SELECT-</option>
+								<option th:each="khuvuc : ${khuvucs}"
+										th:value="${khuvuc.id}"
+										th:text="${khuvuc.MaKhuVuc}">
+								</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="col-form-label" for="anhsanDetails">Ảnh sân</label>
+							<input type="text" class="form-control" id="anhsanDetails" name="anhSan" required>
+						</div>
+
+						<div class="form-group">
+							<label for="chieudaiDetails" class="col-form-label">Chiều dài:</label>
+							<input type="text" class="form-control" id="chieudaiDetails" name="chieuDai" required>
+						</div>
+
+						<div class="form-group">
+							<label for="chieurongDetails" class="col-form-label">Chiều rộng:</label>
+							<input type="text" class="form-control" id="chieurongDetails" name="chieuRong" required>
+						</div>
+
+						<div class="form-group">
+							<label for="diachiDetails" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="diachiDetails" name="diaChi" required>
+						</div>
+
+						<div class="form-group">
+							<label for="dongiaDetails" class="col-form-label">Đơn giá:</label>
+							<input type="text" class="form-control" id="dongiaDetails" name="donGia" required>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="closebtn">Close</button>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 
 	<!--delete modal	-->

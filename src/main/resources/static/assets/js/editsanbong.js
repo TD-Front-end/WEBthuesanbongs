@@ -20,15 +20,34 @@ $('document').ready(function(){
         $('#editModal').modal("show");
         // modal.show();
     });
+    //details
+    $('.table #detailsButton').on('click',function(event) {
+        event.preventDefault();
+        var href= $(this).attr('href');
+        $.get(href, function(sanbong, status){
+            $('#idDetails').val(sanbong.id);
+            $('#tensanDetails').val(sanbong.tenSanBong);
+            $('#ddlkhuvucDetails').val(sanbong.MaKhuVuc);
+            $('#anhsanDetails').val(sanbong.anhSan);
+            $('#chieudaiDetails').val(sanbong.chieuDai);
+            $('#chieurongDetails').val(sanbong.chieuRong);
+            $('#diachiDetails').val(sanbong.diaChi);
+            $('#dongiaDetails').val(sanbong.donGia);
 
-    // $('table #deleteButton').on('click', function (event){
-    //    event.preventDefault();
-    //
-    //
-    //    var href = $(this).attr('href');
-    //    $('#confirmDeleteButton').attr('href', href);
-    //
-    //
-    //    $('#deleteModal').modal();
-    // });
+        });
+        $('#detailsModal').modal("show");
+        $('#closebtn').modal("hide");
+    });
+
+    $('#deleteButton').on('click', function (event) {
+        event.preventDefault();
+
+
+        var href = $(this).attr('href');
+        $('#confirmDeleteButton').attr('href', href);
+
+
+        $('#deleteModal').modal("show");
+    });
 });
+

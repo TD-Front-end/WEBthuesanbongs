@@ -367,7 +367,7 @@
 				</a>
 				<ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 					<li>
-						<a href="khuvuc.html">
+						<a href="/khuvucs"  class="active">
 							<i class="bi bi-circle"></i><span>Chi tiết khu vực</span>
 						</a>
 					</li>
@@ -401,7 +401,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="tables-data.html" class="active">
+						<a href="tables-data.html">
 							<i class="bi bi-circle"></i><span>Data Tables</span>
 						</a>
 					</li>
@@ -536,7 +536,13 @@
 										<td th:text="${khuvuc.id}"></td>
 										<td th:text="${khuvuc.tenKhuVuc}"></td>
 										<td th:text="${khuvuc.diaChi}"></td>
-										<td></td>
+										<td>
+											<div class="btn-group">
+												<a th:href="@{/khuvucs/findById/(id=${khuvuc.id})}" class="btn btn-primary" id="editButton"  >Sửa</a>
+												<a class="btn btn-success" id="detailButton" th:href="@{/khuvucs/findById/(id=${khuvuc.id})}">Chi tiết</a>
+												<a th:href="@{/khuvucs/delete/(id=${khuvuc.id})}" class="btn btn-danger" id="deleteButton">Xoá</a>
+											</div>
+										</td>
 
 									</tr>
 								</tbody>
@@ -593,18 +599,46 @@
 							<input type="text" class="form-control" id="recipient-name" name="diaChi">
 						</div>
 
-<!--						<div class="form-group">-->
-<!--							<label for="recipient-name" class="col-form-label">Mã Khu:</label>-->
-<!--							&lt;!&ndash;							<select th:each="sanbong:${sanbongs}">&ndash;&gt;-->
-<!--							&lt;!&ndash;								<option th:text="${sanbong.MaKhuVuc}">&ndash;&gt;-->
-
-<!--							&lt;!&ndash;								</option>&ndash;&gt;-->
-<!--							&lt;!&ndash;							</select>&ndash;&gt;-->
-<!--							<input type="text" class="form-control" id="recipient-name" name="id">-->
-<!--						</div>-->
-
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Thêm</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--edit khu vực-->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true" data-toogle="modal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cập Nhật Sân</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/khuvucs/update}" method="put">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Mã khu:</label>
+							<input type="text" class="form-control" id="makhuEdit" name="id" readonly>
+						</div>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Tên khu:</label>
+							<input type="text" class="form-control" id="tenkhuEdit" name="tenKhuVuc">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Địa chỉ:</label>
+							<input type="text" class="form-control" id="diachiEdit" name="diaChi">
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Chỉnh sửa</button>
 						</div>
 					</form>
 				</div>
