@@ -1,7 +1,9 @@
 package com.dajava.webthuesanbong.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.dajava.webthuesanbong.models.SanBong;
 import com.dajava.webthuesanbong.repositories.KhuVucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,22 +34,23 @@ public class KhuVucController {
 		return "redirect:/khuvucs";
 	}
 
-	@GetMapping("/khuvucs/edit")
+	//
+	@RequestMapping("khuvucs/findById")
 	@ResponseBody
-	public Object edit(Integer id){
-
+	public Optional<KhuVuc> findById(int id) {
 		return khuvucService.findById(id);
 	}
-	@PostMapping("/khuvuc/edit")
-	public String edit(KhuVuc khuVuc){
-        khuvucService.save(khuVuc);
+	//	//update san
+	@RequestMapping(value="/khuvucs/update", method= {RequestMethod.PUT, RequestMethod.GET})
+	public String update(KhuVuc khuvuc) {
+		khuvucService.save(khuvuc);
 		return "redirect:/khuvucs";
 	}
-
-    @GetMapping("/khuvucs/delete")
-    public String create(@RequestParam("id") int id){
-        khuvucService.delete(id);
-        return "redirect:/khuvucs";
-    }
+	//delete
+	@RequestMapping(value="/khuvuc/delete", method= {RequestMethod.DELETE, RequestMethod.GET})
+	public String delete(int id) {
+		khuvucService.delete(id);
+		return "redirect:/khuvucs";
+	}
 
 }

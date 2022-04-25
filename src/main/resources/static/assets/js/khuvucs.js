@@ -27,5 +27,16 @@ $('document').ready(function(){
 
         $('#deleteModal').modal("show");
     });
+
+    $('#deleteButton').on('click', function (event) {
+        event.preventDefault();
+
+
+        var href = $(this).attr('href');
+        $('#confirmDeleteButton').attr('href', href);
+
+
+        $('#deleteModal').modal("show");
+    });
 });
 
