@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.dajava.webthuesanbong.models.SanBong;
 import com.dajava.webthuesanbong.repositories.KhuVucRepository;
+import com.dajava.webthuesanbong.services.SanBongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class KhuVucController {
 
 	@Autowired
 	private KhuVucService khuvucService;
+
 
 	@GetMapping(value = "/khuvucs")
 	public String getKhuVuc(Model model) {

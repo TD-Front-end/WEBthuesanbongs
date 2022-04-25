@@ -18,6 +18,7 @@ public class KhuVucService {
 	
 	//hiển thị list KhuVuc
 	public List<KhuVuc> getKhuVuc(){
+
 		return khuvucRepository.findAll();
 	}
 

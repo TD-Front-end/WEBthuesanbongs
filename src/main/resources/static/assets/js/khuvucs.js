@@ -1,5 +1,5 @@
 $('document').ready(function(){
-    $('#editButton').on('click',function(event){
+    $('table #deleteButton').on('click',function(event){
         // var modal = $('#editModal');
         event.preventDefault();
 
